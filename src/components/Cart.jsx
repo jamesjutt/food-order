@@ -4,6 +4,7 @@ import Modal from "./ui/Modal";
 import CartContext from "../store/CartContext";
 import Button from "./ui/Button";
 import UserProgressContext from "../store/UserProgressContext";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const cartCtx = useContext(CartContext);
@@ -21,9 +22,14 @@ const Cart = () => {
       <ul>
         {cartCtx.items.map((item) => {
           return (
-            <li key={item.id}>
-              {item.name} - {item.quantity}
-            </li>
+            <CartItem
+              key={item.id}
+              name={item.name}
+              quantity={item.quantity}
+              price={item.price}
+              onIncrease={() => cartCtx.addItem(item)}
+              onDecrease={() => cartCtx.removeItem(item.id)}
+            />
           );
         })}
       </ul>

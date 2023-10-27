@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
+import useHttp from "../hooks/useHttp";
 import MealItem from "./MealItem";
 
-const Meals = () => {
-  const [loadedMeals, setLoadedMeals] = useState([]);
-  useEffect(() => {
-    const fetchMeals = async () => {
-      const response = await fetch("http://localhost:3000/meals");
-      const meals = await response.json();
-      setLoadedMeals(meals);
-    };
-    fetchMeals();
-  }, []);
+const requestConfig = {};
 
+const Meals = () => {
+  const { data, isLoading, error } = useHttp({
+    url: "http://localhost:3000/meals",
+    config: requestConfig,
+    initialData: [],
+  });
+  if (isLoading) {
+    return <p>Fetching meals...</p>;
+  }
   return (
     <ul id="meals">
-      {loadedMeals.map((meal) => (
+      {data.map((meal) => (
         <MealItem key={meal.id} meal={meal} />
       ))}
     </ul>

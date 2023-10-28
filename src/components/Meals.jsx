@@ -1,25 +1,33 @@
-/* eslint-disable no-unused-vars */
-import useHttp from "../hooks/useHttp";
-import MealItem from "./MealItem";
+import MealItem from "./MealItem.jsx";
+import useHttp from "../hooks/useHttp.js";
+import Error from "./Error.jsx";
 
 const requestConfig = {};
 
-const Meals = () => {
-  const { data, isLoading, error } = useHttp({
+export default function Meals() {
+  const {
+    data: loadedMeals,
+    isLoading,
+    error,
+  } = useHttp({
     url: "http://localhost:3000/meals",
     config: requestConfig,
     initialData: [],
   });
+
   if (isLoading) {
-    return <p>Fetching meals...</p>;
+    return <p className="center">Fetching meals...</p>;
   }
+
+  if (error) {
+    return <Error title="Failed to fetch meals" message={error} />;
+  }
+
   return (
     <ul id="meals">
-      {data.map((meal) => (
+      {loadedMeals.map((meal) => (
         <MealItem key={meal.id} meal={meal} />
       ))}
     </ul>
   );
-};
-
-export default Meals;
+}

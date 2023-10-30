@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { currencyFormatter } from "../util/formatting";
-import Modal from "./ui/Modal";
-import CartContext from "../store/CartContext";
-import Input from "./ui/Input";
-import Button from "./ui/Button";
-import UserProgressContext from "../store/UserProgressContext";
-import useHttp from "../hooks/useHttp";
-import Error from "./Error";
+import { currencyFormatter } from "../../util/formatting";
+import Modal from "../ui/Modal";
+import CartContext from "../../store/CartContext";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
+import UserProgressContext from "../../store/UserProgressContext";
+import useHttp from "../../hooks/useHttp";
+import Error from "../Error";
 
 const requestConfig = {
   method: "POST",

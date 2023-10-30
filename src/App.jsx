@@ -1,7 +1,7 @@
-import Cart from "./components/Cart";
-import Checkout from "./components/Checkout";
+import Cart from "./components/Cart/Cart";
+import Checkout from "./components/Cart/Checkout";
 import Header from "./components/Header";
-import Meals from "./components/Meals";
+import Meals from "./components/Meal/Meals";
 import { CartContextProvider } from "./store/CartContext";
 import { UserProgressContextProvider } from "./store/UserProgressContext";
 

@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import { useContext } from "react";
-import { currencyFormatter } from "../util/formatting";
-import Button from "./ui/Button";
-import CartContext from "../store/CartContext";
+import { currencyFormatter } from "../../util/formatting";
+import Button from "../ui/Button";
+import CartContext from "../../store/CartContext";
 
 const MealItem = ({ meal }) => {
   const cartCtx = useContext(CartContext);
